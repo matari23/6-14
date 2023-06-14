@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
+    <script src="script/slick.min.js"></script>
+    <script lang="java">
+        $(function(){
+            $(".title").click(function(){
+                // $(".music_list").slideToggle();이렇게 써도 되고 아래처럼 써도됨.
+                $(this).next().slideToggle();
+            })//click
+            $(".music_list li").click(function(){
+                var txt = $(this).text();
+                console.log("txt:",txt)
+                $(".title").text(txt)
+                var inx =$(this).index();
+                console.log("inx:",inx)
+                $(".cd img").removeClass("on");
+                $(".cd img").eq(inx).addClass("on");
+                $(".music_list").slideUp();
+            })
+        })//jq
+    </script>
+    <style type="text/css">
+        * {margin: 0;padding: 0;}
+        li { 
+            list-style: none;
+        }
+
+        body {
+            background-image: url("images/b_g.png");
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+        }
+
+        .wrap {
+            width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 0 0 50px 50px;
+        }
+        .cd{
+            text-align: center;
+            padding: 0 0 20px;
+        }
+        .cd img{
+            border-radius: 50%;
+            border: 3px solid black;
+        }
+        .cd img.on{
+            border-color: #fff ;
+        }
+        .select_music{
+            cursor: pointer;
+        }
+        .title{
+            width: 100%;
+            border-radius: 20px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 15px;
+            color: orangered;
+            text-indent: 50px;
+            background-color: #fff;
+            background-image: url(images/play.png);
+            background-repeat: no-repeat;
+        }
+        .music_list{
+            margin-top: 10px;
+        }
+        .music_list li{
+            color: #999;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 4px 50px;
+        }
+        .music_list li:hover{
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="cd">
+            <img src="images/cd01.png" alt="cd01">
+            <img src="images/cd02.png" alt="cd02">
+            <img src="images/cd03.png" alt="cd03">
+        </div><!-- cd -->
+        <div class="select_music">
+            <h1 class="title">Now Playing</h1>
+            <ul class="music_list">
+                <li>Lost Stars</li>
+                <li>A Higher Place</li>
+                <li>Like A Fool</li>
+            </ul><!-- music_list -->
+        </div><!-- select_music -->
+    </div><!-- wrap -->
+</body>
+
+</html>

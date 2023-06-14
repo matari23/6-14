@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.6.4.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
+    <script src="script/slick.min.js"></script>
+
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        ol,ul,li{list-style: none;}
+        body{
+            background-image: url("images/bg.png");
+            background-attachment: fixed;
+        }
+        .wrap{
+            width: 800px;
+            margin: 100px auto;
+            display: flex;
+            border: 10px solid black;
+            height: 600px;
+            /* cursor: url("images/pointer.png") 150 150 ,auto; */
+        }
+        .wrap:hover{
+            cursor: url("images/icons8-search-50.png"),auto;
+
+        }
+        .cover{
+            background-color: rgb(210, 242, 210);
+            width: 400px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cover img{}
+        .animal_list{
+            width: 400px;
+            height: 600px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .animal_list li{
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid #fff; */
+        }
+        .animal_list li img{
+            width: 100px;
+            height: 100px;
+        }
+        .animal_list li img.big{
+            width: 150px;
+            height: 150px;
+        }
+        .animal_list li.a01{background-color: rgb(111, 156, 172);}
+        .animal_list li.a02{background-color: rgb(185, 231, 234);}
+        .animal_list li.a03{background-color: rgb(216, 203, 249);}
+        .animal_list li.a04{background-color: rgb(242, 210, 218);}
+        .animal_list li.a05{background-color: rgb(242, 231, 210);}
+        .animal_list li.a06{background-color: rgb(125, 168, 152);}
+    </style>
+
+</head>
+<body>
+    <div class="wrap">
+        <div class="cover">
+            <img src="images/a.png" alt="a.png">
+        </div><!-- cover -->
+        <ul class="animal_list">
+            <li class="a01"><img src="images/a01.png" alt="a01"></li>
+            <li class="a02"><img src="images/a02.png" alt="a02"></li>
+            <li class="a03"><img src="images/a03.png" alt="a03"></li>
+            <li class="a04"><img src="images/a04.png" alt="a04"></li>   
+            <li class="a05"><img src="images/a05.png" alt="a05"></li>
+            <li class="a06"><img src="images/a06.png" alt="a06"></li>
+        </ul><!-- animal_list -->
+    </div><!-- wrap -->
+    <script lang="java">
+        $(function(){
+            $(".animal_list li").click(function(){
+                $(".animal_list li img").removeClass("big,400");  /*  400은 removeClass를 거둬가는 시간의미 */
+                $(this).find("img").addClass("big",500,"easeOutElastic") 
+                /*  linear은 같은 속도로 움직이는것 swing서서히 커지는것  easeOutBounce커지면서 튕겨지는것 easeOutElastic탕 커지고 튕겨지고 커짐 easeInElastic튕겨지고 커지는것*/
+                var bg = $(this).css("background-color")
+                console.log("bg:",bg)
+                $(".cover").css({"background-color":bg})
+                var path = $(this).find("img").attr("src");
+                console.log("path:",path)
+                $(".cover img").attr("src",path)
+            })//click
+        })//jq
+    </script>
+</body>
+</html>
